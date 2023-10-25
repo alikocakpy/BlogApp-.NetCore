@@ -8,7 +8,7 @@ namespace Blog.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Image> builder)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

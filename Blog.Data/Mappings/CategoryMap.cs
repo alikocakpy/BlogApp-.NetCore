@@ -8,7 +8,6 @@ namespace Blog.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            throw new NotImplementedException();
         }
     }
 }
