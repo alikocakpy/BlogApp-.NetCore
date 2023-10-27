@@ -4,6 +4,7 @@ using Blog.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blog.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231027034404_update-image-properties")]
+    partial class updateimageproperties
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,7 +48,7 @@ namespace Blog.Data.Migrations
                     b.Property<string>("DeletedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("ImageId")
@@ -57,7 +60,7 @@ namespace Blog.Data.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ModifiedDate")
+                    b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
@@ -74,32 +77,6 @@ namespace Blog.Data.Migrations
                     b.HasIndex("ImageId");
 
                     b.ToTable("Articles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("55380ef0-c8a4-4990-8e67-2787c8fd0e25"),
-                            CategoryId = new Guid("ee0433d7-ca05-4923-9351-3a6dee2fde0f"),
-                            Content = "First Title Content",
-                            CreatedBy = "Admin",
-                            CreatedDate = new DateTime(2023, 10, 27, 7, 16, 49, 351, DateTimeKind.Local).AddTicks(6297),
-                            ImageId = new Guid("38ab58f5-e29c-4b07-8e56-84ea9b042360"),
-                            IsDeleted = false,
-                            Title = "Title 1",
-                            ViewCount = 15
-                        },
-                        new
-                        {
-                            Id = new Guid("a7d7da5e-a409-4688-b603-f816268bd26d"),
-                            CategoryId = new Guid("0cd944d0-911c-4269-b527-4df9afbcb3e7"),
-                            Content = "Second Title Content",
-                            CreatedBy = "Admin",
-                            CreatedDate = new DateTime(2023, 10, 27, 7, 16, 49, 351, DateTimeKind.Local).AddTicks(6303),
-                            ImageId = new Guid("a8ed4358-ae31-460a-a510-cc916ed7e235"),
-                            IsDeleted = false,
-                            Title = "Title 2",
-                            ViewCount = 25
-                        });
                 });
 
             modelBuilder.Entity("Blog.Entity.Entities.Category", b =>
@@ -118,7 +95,7 @@ namespace Blog.Data.Migrations
                     b.Property<string>("DeletedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
@@ -127,7 +104,7 @@ namespace Blog.Data.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ModifiedDate")
+                    b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
@@ -137,24 +114,6 @@ namespace Blog.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("ee0433d7-ca05-4923-9351-3a6dee2fde0f"),
-                            CreatedBy = "Admin",
-                            CreatedDate = new DateTime(2023, 10, 27, 7, 16, 49, 351, DateTimeKind.Local).AddTicks(8059),
-                            IsDeleted = false,
-                            Name = "Category 1"
-                        },
-                        new
-                        {
-                            Id = new Guid("0cd944d0-911c-4269-b527-4df9afbcb3e7"),
-                            CreatedBy = "Admin",
-                            CreatedDate = new DateTime(2023, 10, 27, 7, 16, 49, 351, DateTimeKind.Local).AddTicks(8063),
-                            IsDeleted = false,
-                            Name = "Category 2"
-                        });
                 });
 
             modelBuilder.Entity("Blog.Entity.Entities.Image", b =>
@@ -173,7 +132,7 @@ namespace Blog.Data.Migrations
                     b.Property<string>("DeletedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FileName")
@@ -190,32 +149,12 @@ namespace Blog.Data.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ModifiedDate")
+                    b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("Images");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("38ab58f5-e29c-4b07-8e56-84ea9b042360"),
-                            CreatedBy = "Admin",
-                            CreatedDate = new DateTime(2023, 10, 27, 7, 16, 49, 351, DateTimeKind.Local).AddTicks(9393),
-                            FileName = "images/image1",
-                            FileType = "jpg",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = new Guid("a8ed4358-ae31-460a-a510-cc916ed7e235"),
-                            CreatedBy = "Admin",
-                            CreatedDate = new DateTime(2023, 10, 27, 7, 16, 49, 351, DateTimeKind.Local).AddTicks(9397),
-                            FileName = "images/image2",
-                            FileType = "jpg",
-                            IsDeleted = false
-                        });
                 });
 
             modelBuilder.Entity("Blog.Entity.Entities.Article", b =>
